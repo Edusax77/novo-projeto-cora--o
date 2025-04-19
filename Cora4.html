@@ -13,6 +13,10 @@
             height: auto;
             font-family: sans-serif;
             overflow-x: hidden;
+            display: flex; /* Adicionado para centralizar verticalmente o conteúdo */
+            flex-direction: column; /* Organiza os itens em coluna */
+            align-items: center; /* Centraliza os itens horizontalmente */
+            justify-content: flex-start; /* Alinha os itens ao topo, mas pode ser modificado */
         }
 
         header {
@@ -27,10 +31,11 @@
             display: inline; /* Para não ocupar a linha inteira e centralizar */
         }
 
-        .container-coracao { /* Novo container para centralizar os corações */
+        .container-coracao { /* Novo container para centralizar o coração */
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 30px; /* Adicionada margem inferior */
         }
 
         .coracao {
@@ -39,55 +44,7 @@
             justify-content: center;
             width: 80px;
             margin: 30px auto;
-            animation: pulsa-lento 0.9s linear 0s infinite; /* Renomeei para clareza */
-        }
-
-        .coracao.rapido { /* Nova classe para o coração "quando estou com você" */
-            animation: pulsa-rapido 0.2s linear 0s infinite; /* Animação mais rápida */
-        }
-
-        .cor {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #e71940;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        @keyframes pulsa-lento {
-            0% {
-                transform: scale(0.9) rotate(0deg);
-            }
-            50% {
-                transform: scale(1) rotate(0deg);
-            }
-            70% {
-                transform: scale(1.1) rotate(0deg);
-            }
-            80% {
-                transform: scale(1.2) rotate(0deg);
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
-            }
-        }
-
-        @keyframes pulsa-rapido {
-            0% {
-                transform: scale(0.9) rotate(0deg);
-            }
-            50% {
-                transform: scale(1) rotate(0deg);
-            }
-            70% {
-                transform: scale(1.1) rotate(0deg);
-            }
-            80% {
-                transform: scale(1.2) rotate(0deg);
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
-            }
+            animation: pulsa 1s linear 0s infinite; /* Correção 1: Renomeado e ajustado a animação */
         }
 
         .square {
@@ -119,18 +76,10 @@
             top: 4px;
         }
 
-        .mensagem-sem-voce { /* Estilo para a mensagem "quando estou sem você" */
+        .mensagem-sem-voce { /* Estilo para a mensagem principal */
             text-align: center;
             margin-bottom: 20px;
-        }
-
-        main.coracao {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            width: 80px;
-            margin: 20px auto; /* Ajustei a margem */
-            padding-bottom: 20px;
+            font-size: 1.2em; /* Ajuste no tamanho da fonte */
         }
 
         footer {
@@ -141,11 +90,20 @@
 
         footer h1 {
             display: block; /* Para o nome ficar abaixo do "Te amo..." */
+            font-size: 1.6em; /* Ajuste no tamanho da fonte */
         }
 
         footer p {
             cursor: text; /* Indica que o texto é editável */
             display: inline;
+            font-size: 1em;
+        }
+
+        /* Correção 2: Animação de pulsação mais suave e única */
+        @keyframes pulsa {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(0.95); }
         }
 
         /* Media Query para telas menores (ex: celulares) */
@@ -164,15 +122,62 @@
             }
 
             .square {
-                width: 30px;
-                height: 30px;
-                top: 20px;
+                width: 30px; /* Ajuste para telas menores */
+                height: 30px; /* Ajuste para telas menores */
+                top: 22px; /* Ajuste para telas menores */
             }
 
             .circle:after,
             .circle:before {
-                width: 34px;
-                height: 35px;
+                width: 34px; /* Ajuste para telas menores */
+                height: 35px; /* Ajuste para telas menores */
+            }
+
+            .mensagem-sem-voce {
+                font-size: 1.1em; /* Ajuste para telas menores */
+            }
+
+            footer h1 {
+                font-size: 1.4em; /* Ajuste para telas menores */
+            }
+
+            footer p {
+                font-size: 0.9em; /* Ajuste para telas menores */
+            }
+        }
+
+        /* Media Query específica para a resolução de 425px de largura */
+        @media (max-width: 425px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .coracao {
+                width: 50px; /* Ajuste para esta resolução */
+            }
+
+            .square {
+                width: 25px; /* Ajuste para esta resolução */
+                height: 25px; /* Ajuste para esta resolução */
+                top: 18px; /* Ajuste para esta resolução */
+            }
+
+            .circle:after,
+            .circle:before {
+                width: 28px; /* Ajuste para esta resolução */
+                height: 29px; /* Ajuste para esta resolução */
+            }
+
+            .mensagem-sem-voce {
+                font-size: 1em; /* Ajuste para esta resolução */
+            }
+
+            footer h1 {
+                font-size: 1.2em; /* Ajuste para esta resolução */
+            }
+
+            footer p {
+                font-size: 0.8em; /* Ajuste para esta resolução */
             }
         }
     </style>
@@ -186,17 +191,11 @@
     </header>
 
     <div class="container-coracao">
-        <h1 class="mensagem-sem-voce"> Quando estou sem você meu coração bate assim </h1>
+        <h1 class="mensagem-sem-voce">Meu coração bate por você</h1>
         <div class="coracao">
             <div class="square"></div>
             <div class="circle"></div>
         </div>
-
-        <h1 style="margin-top: 30px;"> Mas quando estou com você...</h1>
-        <main class="coracao rapido">
-            <div class="square"></div>
-            <div class="circle"></div>
-        </main>
     </div>
 
     <footer>
@@ -206,7 +205,7 @@
     </footer>
 
     <script>
-        // Opcional: Manter os nomes sincronizados (se quiser que o nome dela no cabeçalho seja o mesmo no rodapé)
+        // Opcional: Manter os nomes sincronizados
         const nomeDelaHeader = document.getElementById('nome-dela');
         const nomeDelaFooter = document.getElementById('nome-dela-footer');
         const seuNomeFooter = document.getElementById('seu-nome-footer');
