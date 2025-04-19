@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Coração</title>
+    <style>
+        body {
+            background-color: #e67e9194;
+            margin: 0;
+            padding: 20px;
+            height: auto;
+            font-family: sans-serif;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            cursor: text; /* Indica que o texto é editável */
+            display: inline; /* Para não ocupar a linha inteira e centralizar */
+        }
+
+        .container-coracao { /* Novo container para centralizar os corações */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .coracao {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            width: 80px;
+            margin: 30px auto;
+            animation: pulsa-lento 1.5s linear 0s infinite; /* Renomeei para clareza */
+        }
+
+        .coracao.rapido { /* Nova classe para o coração "quando estou com você" */
+            animation: pulsa-rapido 0.35s linear 0s infinite; /* Animação mais rápida */
+        }
+
+        .cor {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #e71940;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        @keyframes pulsa-lento {
+            0% {
+                transform: scale(0.9) rotate(0deg);
+            }
+            50% {
+                transform: scale(1) rotate(0deg);
+            }
+            70% {
+                transform: scale(1.1) rotate(0deg);
+            }
+            80% {
+                transform: scale(1.2) rotate(0deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes pulsa-rapido {
+            0% {
+                transform: scale(0.9) rotate(0deg);
+            }
+            50% {
+                transform: scale(1) rotate(0deg);
+            }
+            70% {
+                transform: scale(1.1) rotate(0deg);
+            }
+            80% {
+                transform: scale(1.2) rotate(0deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .square {
+            transform: rotate(45deg);
+            width: 40px;
+            height: 40px;
+            background: #e71940;
+            position: absolute;
+            top: 25px;
+        }
+
+        .circle:after,
+        .circle:before {
+            content: "";
+            position: absolute;
+            width: 44px;
+            height: 45px;
+            border-radius: 50%;
+            background: #e71940;
+        }
+
+        .circle:after {
+            left: 3px;
+            top: 4px;
+        }
+
+        .circle:before {
+            right: 3px;
+            top: 4px;
+        }
+
+        .mensagem-sem-voce { /* Estilo para a mensagem "quando estou sem você" */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        main.coracao {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            width: 80px;
+            margin: 20px auto; /* Ajustei a margem */
+            padding-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px; /* Ajustei a margem */
+            padding-top: 20px;
+        }
+
+        footer h1 {
+            display: block; /* Para o nome ficar abaixo do "Te amo..." */
+        }
+
+        footer p {
+            cursor: text; /* Indica que o texto é editável */
+            display: inline;
+        }
+
+        /* Media Query para telas menores (ex: celulares) */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.7em;
+            }
+
+            .coracao {
+                width: 60px;
+                margin: 20px auto;
+            }
+
+            .square {
+                width: 30px;
+                height: 30px;
+                top: 20px;
+            }
+
+            .circle:after,
+            .circle:before {
+                width: 34px;
+                height: 35px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <header>
+        <h1 id="nome-dela" contenteditable="true">[Nome Dela]</h1>
+        <h1>Você é a mulher da minha vida!</h1>
+    </header>
+
+    <div class="container-coracao">
+        <h1 class="mensagem-sem-voce"> Quando estou sem você meu coração bate assim </h1>
+        <div class="coracao">
+            <div class="square"></div>
+            <div class="circle"></div>
+        </div>
+
+        <h1 style="margin-top: 30px;"> Mas quando estou com você...</h1>
+        <main class="coracao rapido">
+            <div class="square"></div>
+            <div class="circle"></div>
+        </main>
+    </div>
+
+    <footer>
+        <p class="cor">Feliz dia dos namorados</p>
+        <h1>Te amo muitoooo, <span id="nome-dela-footer" contenteditable="true">[Nome Dela]</span>!</h1>
+        <p id="seu-nome-footer" contenteditable="true">[Seu Nome]</p>
+    </footer>
+
+    <script>
+        // Opcional: Manter os nomes sincronizados (se quiser que o nome dela no cabeçalho seja o mesmo no rodapé)
+        const nomeDelaHeader = document.getElementById('nome-dela');
+        const nomeDelaFooter = document.getElementById('nome-dela-footer');
+        const seuNomeFooter = document.getElementById('seu-nome-footer');
+
+        nomeDelaHeader.addEventListener('input', () => {
+            nomeDelaFooter.textContent = nomeDelaHeader.textContent;
+        });
+
+        nomeDelaFooter.addEventListener('input', () => {
+            nomeDelaHeader.textContent = nomeDelaFooter.textContent;
+        });
+    </script>
+
+</body>
+</html>

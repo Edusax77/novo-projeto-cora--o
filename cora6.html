@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Coração</title>
+    <style>
+        /* Correção 1: Adicionado um reset CSS básico para consistência entre navegadores */
+        body, h1, p, main, footer {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        body {
+            line-height: 1;
+        }
+        /* Fim do reset CSS básico */
+
+        body {
+            background-color: #e67e9194;
+            padding: 15px;
+            height: auto;
+            font-family: sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.8em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+            margin-bottom: 8px;
+            cursor: text;
+            display: inline;
+        }
+
+        .container-coracao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%; /* Correção 2: Garante que o container ocupe toda a largura disponível */
+        }
+
+        .coracao {
+            position: relative;
+            width: 60px; /* Mantive o tamanho base */
+            height: 55px; /* Mantive o tamanho base */
+            margin: 15px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .coracao.lento {
+            animation: pulsa-lento 1.5s linear 0s infinite;
+        }
+
+        .coracao.rapido {
+            animation: pulsa-rapido 0.75s linear 0s infinite;
+        }
+
+        .square {
+            width: 40px; /* Mantive o tamanho base */
+            height: 40px; /* Mantive o tamanho base */
+            background-color: #e71940; /* Correção 6: Usando background-color */
+            transform: rotate(45deg);
+            position: absolute;
+        }
+
+        .circle {
+            width: 44px; /* Mantive o tamanho base */
+            height: 45px; /* Mantive o tamanho base */
+            background-color: #e71940; /* Correção 6: Usando background-color */
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .circle:after,
+        .circle:before {
+            content: "";
+            position: absolute;
+            width: 44px; /* Mantive o tamanho base */
+            height: 45px; /* Mantive o tamanho base */
+            border-radius: 50%;
+            background-color: inherit; /* Herda a cor de fundo do .circle */
+        }
+
+        .circle:after {
+            left: -12px;
+            top: -10px; /* Ajuste mais preciso para cobrir o "bico" */
+        }
+
+        .circle:before {
+            right: -12px;
+            top: -10px; /* Ajuste mais preciso para cobrir o "bico" */
+        }
+
+        .mensagem-sem-voce {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+        }
+
+        main.coracao {
+            margin-top: 20px;
+        }
+
+        .cor {
+            font-size: 1.2em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+            font-weight: bold;
+            color: #e71940;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 15px;
+        }
+
+        footer h1 {
+            display: block;
+            font-size: 1.4em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+            margin-top: 5px;
+        }
+
+        footer p {
+            cursor: text;
+            display: inline;
+            font-size: 1em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+        }
+
+        @keyframes pulsa-lento {
+            0% { transform: scale(0.9); }
+            50% { transform: scale(1); }
+            70% { transform: scale(1.1); }
+            80% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pulsa-rapido {
+            0% { transform: scale(0.9); }
+            50% { transform: scale(1); }
+            70% { transform: scale(1.1); }
+            80% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Media Query para telas menores (máximo 600px) */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+                margin-bottom: 5px;
+            }
+
+            .coracao {
+                width: 50px; /* Ajuste para telas menores */
+                height: 45px; /* Ajuste para telas menores */
+                margin: 10px auto;
+            }
+
+            .square {
+                width: 36px; /* Ajuste para telas menores */
+                height: 36px; /* Ajuste para telas menores */
+            }
+
+            .circle {
+                width: 38px; /* Ajuste para telas menores */
+                height: 39px; /* Ajuste para telas menores */
+            }
+
+            .circle:after {
+                width: 38px; /* Ajuste para telas menores */
+                height: 39px; /* Ajuste para telas menores */
+                left: -10px; /* Ajuste no posicionamento */
+                top: -8px; /* Ajuste no posicionamento */
+            }
+
+            .circle:before {
+                width: 38px; /* Ajuste para telas menores */
+                height: 39px; /* Ajuste para telas menores */
+                right: -10px; /* Ajuste no posicionamento */
+                top: -8px; /* Ajuste no posicionamento */
+            }
+
+            .mensagem-sem-voce {
+                font-size: 1em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+            }
+
+            footer h1 {
+                font-size: 1.2em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+            }
+
+            footer p {
+                font-size: 0.9em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+            }
+        }
+
+        /* Media Query específica para a resolução de 425px de largura */
+        @media (max-width: 425px) {
+            h1 {
+                font-size: 1.3em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+                margin-bottom: 3px;
+            }
+
+            .coracao {
+                width: 45px; /* Correção 3: Ajuste específico para 425px */
+                height: 41px; /* Correção 3: Ajuste específico para 425px */
+                margin: 8px auto;
+            }
+
+            .square {
+                width: 32px; /* Correção 4: Ajuste específico para 425px */
+                height: 40px; /* Correção 4: Ajuste específico para 425px */
+            }
+
+            .circle {
+                width: 34px; /* Correção 5: Ajuste específico para 425px */
+                height: 40px; /* Correção 5: Ajuste específico para 425px */
+            }
+
+            .circle:after {
+                width: 34px; /* Correção 5: Ajuste específico para 425px */
+                height: 35px; /* Correção 5: Ajuste específico para 425px */
+                left: -9px; /* Ajuste preciso para cobrir o "bico" */
+                top: -9px; /* Ajuste preciso para cobrir o "bico" */
+            }
+
+            .circle:before {
+                width: 34px; /* Correção 5: Ajuste específico para 425px */
+                height: 35px; /* Correção 5: Ajuste específico para 425px */
+                right: -9px; /* Ajuste preciso para cobrir o "bico" */
+                top: -9px; /* Ajuste preciso para cobrir o "bico" */
+            }
+
+            .mensagem-sem-voce {
+                font-size: 0.9em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+            }
+
+            footer h1 {
+                font-size: 1.1em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+            }
+
+            footer p {
+                font-size: 0.8em; /* Correção 8: Usando em para tamanho de fonte (relativo) */
+            }
+        }
+
+        /* Media Query para telas ainda menores (máximo 375px - iPhones menores) */
+        @media (max-width: 375px) {
+            .coracao {
+                width: 35px;
+                height: 32px;
+            }
+
+            .square {
+                width: 26px;
+                height: 26px;
+            }
+
+            .circle {
+                width: 26px;
+                height: 27px;
+            }
+
+            .circle:after {
+                width: 26px;
+                height: 27px;
+                left: -7px;
+                top: -9px;
+            }
+
+            .circle:before {
+                width: 26px;
+                height: 27px;
+                right: -7px;
+                top: -9px;
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <header>
+        <h1 id="nome-dela" contenteditable="true">Nome</h1>
+        <h1>Você é a mulher da minha vida!</h1>
+    </header>
+
+    <div class="container-coracao">
+        <h1 class="mensagem-sem-voce"> Quando estou sem você meu coração bate assim </h1>
+        <div class="coracao lento">
+            <div class="square"></div>
+            <div class="circle"></div>
+        </div>
+
+        <h1 style="margin-top: 20px;"> Mas quando estou com você...</h1>
+        <main class="coracao rapido">
+            <div class="square"></div>
+            <div class="circle"></div>
+        </main>
+    </div>
+
+    <footer>
+        <p class="cor">Feliz dia dos namorados</p>
+        <h1>Te amo muitoooo, <span id="nome-dela-footer" contenteditable="true">Nome</span>!</h1>
+        <p id="seu-nome-footer" contenteditable="true">Seu Nome</p>
+    </footer>
+
+    <script>
+        const nomeDelaHeader = document.getElementById('nome-dela');
+        const nomeDelaFooter = document.getElementById('nome-dela-footer');
+        const seuNomeFooter = document.getElementById('seu-nome-footer');
+
+        nomeDelaHeader.addEventListener('input', () => {
+            nomeDelaFooter.textContent = nomeDelaHeader.textContent;
+        });
+
+        nomeDelaFooter.addEventListener('input', () => {
+            nomeDelaHeader.textContent = nomeDelaFooter.textContent;
+        });
+    </script>
+
+</body>
+</html>
